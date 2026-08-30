@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">Bullish Dragon signal example</title>
+  <desc id="desc">A schematic candlestick path with head, front foot, hump, rear foot, projected trendline, and long entry.</desc>
+  <rect width="1200" height="620" rx="24" fill="#f8fafc" />
+  <g stroke="#e2e8f0" stroke-width="1">
+    <path d="M60 110H1140M60 200H1140M60 290H1140M60 380H1140M60 470H1140" />
+    <path d="M140 70V540M300 70V540M460 70V540M620 70V540M780 70V540M940 70V540M1100 70V540" />
+  </g>
+  <g font-family="Inter, system-ui, sans-serif">
+    <text x="60" y="48" fill="#0f172a" font-size="28" font-weight="700">Bullish Dragon · confirmed tail entry</text>
+    <polyline points="105,126 190,162 280,236 375,410 470,332 565,278 650,374 735,336 825,214 920,138 1040,104" fill="none" stroke="#94a3b8" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity="0.34" />
+    <polyline points="190,162 375,410 565,278 650,374 825,214" fill="none" stroke="#a855f7" stroke-width="5" stroke-linejoin="round" />
+    <line x1="190" y1="162" x2="825" y2="314" stroke="#2563eb" stroke-width="5" stroke-dasharray="13 10" />
+    <line x1="650" y1="374" x2="825" y2="214" stroke="#22c55e" stroke-width="4" marker-end="url(#entry-arrow)" />
+    <g fill="#f59e0b" stroke="#fff" stroke-width="4">
+      <circle cx="190" cy="162" r="13" /><circle cx="375" cy="410" r="13" /><circle cx="565" cy="278" r="13" /><circle cx="650" cy="374" r="13" />
+    </g>
+    <g fill="#1e293b" font-size="18" font-weight="700">
+      <text x="156" y="132">1 · head</text>
+      <text x="318" y="450">2 · front foot</text>
+      <text x="522" y="250">3 · hump</text>
+      <text x="620" y="414">4 · rear foot</text>
+      <text x="790" y="186" fill="#15803d">5 · entry</text>
+    </g>
+    <g fill="#475569" font-size="16">
+      <text x="380" y="114">projected head-to-hump line</text>
+      <text x="60" y="580">Rear-foot offset: 10–15% of pattern height · Hump retracement: 30–50%</text>
+    </g>
+  </g>
+  <defs><marker id="entry-arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#22c55e" /></marker></defs>
+</svg>
