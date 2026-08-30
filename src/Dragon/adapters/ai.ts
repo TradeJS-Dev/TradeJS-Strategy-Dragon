@@ -1,8 +1,12 @@
 import { mapAiRuntimeFromConfig } from "@tradejs/core/strategies";
-import { StrategyAiAdapter } from "@tradejs/types";
-import { DragonConfig } from "../config";
+import {
+  getAiPayloadNumber,
+  withStrategyLocalAiGate,
+} from "@tradejs/strategy-kit/ai-gate";
+import type { StrategyAiAdapter } from "@tradejs/types";
+import type { DragonConfig } from "../config";
 
-export const dragonAiAdapter: StrategyAiAdapter = {
+const dragonBaseAiAdapter: StrategyAiAdapter = {
   buildPayload: ({ signal, basePayload }) => {
     const baseAdditional =
       (basePayload.additionalIndicators as
@@ -51,3 +55,33 @@ Interpretation rules for Dragon:
       config as Pick<DragonConfig, "AI_ENABLED" | "AI_MODE" | "MIN_AI_QUALITY">,
     ),
 };
+
+export const dragonAiAdapter = withStrategyLocalAiGate(dragonBaseAiAdapter, {
+  id: "dragon_directional_regime_and_buy_pressure_2026_08_30",
+  approves: ({ signal, payload }) => {
+    const altVolToBtcVol24h = getAiPayloadNumber(
+      payload,
+      "additionalIndicators.baseContext.relative.btcAltRegime.altVolToBtcVol24h",
+    );
+    const nearestBuyPressureDistanceAtr = getAiPayloadNumber(
+      payload,
+      "additionalIndicators.baseContext.structure.liquidityTails.nearestBuyPressure.distanceAtr",
+    );
+    const nearestBuyPressureTouches = getAiPayloadNumber(
+      payload,
+      "additionalIndicators.baseContext.structure.liquidityTails.nearestBuyPressure.touches",
+    );
+
+    if (signal.direction === "LONG") {
+      return altVolToBtcVol24h != null && altVolToBtcVol24h <= 1.4;
+    }
+
+    return (
+      signal.direction === "SHORT" &&
+      nearestBuyPressureDistanceAtr != null &&
+      nearestBuyPressureDistanceAtr <= 7.5 &&
+      nearestBuyPressureTouches != null &&
+      nearestBuyPressureTouches >= 2
+    );
+  },
+});
