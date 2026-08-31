@@ -57,7 +57,7 @@ Interpretation rules for Dragon:
 };
 
 export const dragonAiAdapter = withStrategyLocalAiGate(dragonBaseAiAdapter, {
-  id: "dragon_directional_regime_and_buy_pressure_2026_08_30",
+  id: "dragon_h5_confirmed_tail_directional_gate_2026_08_31",
   approves: ({ signal, payload }) => {
     const altVolToBtcVol24h = getAiPayloadNumber(
       payload,
@@ -71,9 +71,18 @@ export const dragonAiAdapter = withStrategyLocalAiGate(dragonBaseAiAdapter, {
       payload,
       "additionalIndicators.baseContext.structure.liquidityTails.nearestBuyPressure.touches",
     );
+    const breakoutAfterRearFootBars = getAiPayloadNumber(
+      payload,
+      "additionalIndicators.dragonContext.breakoutAfterRearFootBars",
+    );
 
     if (signal.direction === "LONG") {
-      return altVolToBtcVol24h != null && altVolToBtcVol24h <= 1.4;
+      return (
+        altVolToBtcVol24h != null &&
+        altVolToBtcVol24h <= 1.4 &&
+        breakoutAfterRearFootBars != null &&
+        breakoutAfterRearFootBars >= 8
+      );
     }
 
     return (
