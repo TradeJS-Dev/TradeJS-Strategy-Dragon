@@ -1,0 +1,24 @@
+{
+  "schema": "tradejs-launch-report/v1",
+  "strategy": "Dragon",
+  "candidate": "H5 confirmed tail",
+  "sourceSha256": "4717c3a6104ee221f27dbd1acc0757e4599cbdb6c457dda2e0fe849c4efc2dbe",
+  "metrics": {
+    "trades": 115,
+    "pnl": 555.3600000000001,
+    "maxDrawdown": 52.260000000000005,
+    "maxLossStreak": 6,
+    "profitFactor": 2.178132756316427,
+    "winRatePercent": 59.130434782608695,
+    "maxDrawdownDurationDays": 392.09375
+  },
+  "researchRiskUsdt": 10,
+  "period": {
+    "start": 1610423100000,
+    "end": 1787266800000
+  },
+  "chart": {
+    "caption": "Historical cumulative P&L and drawdown from peak, in USDT.",
+    "sha256": "ad5b55ee0e39120fc2ce61c618ec47ad1471448eb1728a1920b928326329c91e"
+  }
+}
